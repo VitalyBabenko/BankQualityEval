@@ -1,0 +1,14 @@
+.root {
+  height: 110px;
+
+  .container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+
+    img {
+      display: block;
+      height: 110px;
+    }
+  }
+}
