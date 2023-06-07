@@ -1,21 +1,19 @@
 .root {
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
+  padding-top: 20px;
 
-  .paper {
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
-    padding-right: 50%;
-    margin-bottom: 12px;
+  .title {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-top: 3px solid #2527a9;
 
-    span {
-      margin-bottom: 10px;
+    h2 {
+      font-weight: 500;
     }
 
-    input {
-      width: 50%;
+    p {
+      font-weight: 400;
     }
   }
 }
