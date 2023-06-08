@@ -1,17 +1,15 @@
 import { Container, Button } from "@mui/material";
-import logo from "../../assets/logo.png";
-import headerDecor from "../../assets/header-decor.png";
-import style from "./PreLanding.module.scss";
 import { Link } from "react-router-dom";
+import { Header } from "../../components/Header";
+import { ReactComponent as Decor } from "../../assets/decor.svg";
+import style from "./PreLanding.module.scss";
 
 export const PreLanding = () => {
   return (
-    <Container className={style.root} maxWidth="lg">
-      <img className={style.decor} src={headerDecor} alt="decor" />
-
-      <main>
-        <img className={style.logo} src={logo} alt="CNB Logo" />
-        <div className={style.text}>
+    <>
+      <Container className={style.root} maxWidth="lg">
+        <Header />
+        <main>
           <h1>
             Státní statistické zjišťování kvality služeb bank v České republice
           </h1>
@@ -22,12 +20,15 @@ export const PreLanding = () => {
           </p>
 
           <Link to="/form">
-            <Button size="large" variant="outlined">
+            <Button size="large" variant="contained">
               Contained button
             </Button>
           </Link>
-        </div>
-      </main>
-    </Container>
+        </main>
+      </Container>
+      <div className={style.background}>
+        <Decor className={style.decor} />
+      </div>
+    </>
   );
 };

@@ -1,41 +1,86 @@
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+
+  .decor {
+    position: relative;
+    bottom: 400px;
+    top: 300px;
+    width: 150vw;
+    z-index: -1;
+  }
+}
+
 .root {
   display: flex;
   flex-direction: column;
-
-  .decor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 15px;
-    width: 100vw;
-  }
+  color: #090909;
+  height: 100vh;
 
   main {
     display: flex;
-    margin-top: 15vh;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10vh;
 
-    .logo {
-      width: 40%;
+    h1 {
+      font-size: 64px;
+      margin-bottom: 26px;
+      line-height: 77px;
+      font-weight: 700;
     }
 
-    .text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-
-      h1 {
-        margin: 0;
-        margin-top: 40px;
-      }
-
-      p {
-        font-size: 20px;
-      }
-
-      button {
-        margin-left: auto;
-      }
+    p {
+      margin: 0 auto;
+      max-width: 600px;
+      font-size: 16px;
+      line-height: 28px;
+      margin-bottom: 35px;
     }
+
+    button {
+      margin-left: auto;
+    }
+  }
+}
+
+@media (max-width: 1030px) {
+  .background .decor {
+    top: 400px;
+  }
+}
+
+@media (max-width: 780px) {
+  .background .decor {
+    top: 500px;
+  }
+
+  .root main h1 {
+    font-size: 48px;
+    line-height: 55px;
+  }
+}
+
+@media (max-width: 550px) {
+  .background .decor {
+    top: 600px;
+  }
+
+  .root main h1 {
+    font-size: 42px;
+    line-height: 48px;
+  }
+}
+
+@media (max-width: 400px) {
+  .root main h1 {
+    font-size: 36px;
+    line-height: 45px;
+    margin-bottom: 15px;
   }
 }

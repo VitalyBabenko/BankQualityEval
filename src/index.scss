@@ -1,7 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  // overflow-x: hidden;
+  // overflow-y: hidden;
 }
 
 header {
@@ -33,9 +45,4 @@ header {
     min-width: 135px;
     margin-left: auto;
   }
-}
-
-.float-right {
-  background-color: red;
-  margin-left: auto;
 }
