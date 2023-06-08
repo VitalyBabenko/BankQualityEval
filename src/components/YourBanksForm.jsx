@@ -1,5 +1,4 @@
 import { Checkbox, FormControlLabel, Paper } from "@mui/material";
-import style from "./YourBanksForm.module.scss";
 
 export const YourBanksForm = () => {
   const handleChange = () => {};
@@ -17,8 +16,8 @@ export const YourBanksForm = () => {
     "Neexistuje žádná správná možnost",
   ];
   return (
-    <Paper className={style.root} elevation={3}>
-      <span className={style.question}>
+    <Paper className="section" elevation={3}>
+      <span className="title">
         Kterého bankovního klienta využíváte nebo využíváte nejčastěji, pokud
         jste klientem více než jedné banky?
       </span>

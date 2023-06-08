@@ -1,0 +1,41 @@
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  height: 110px;
+
+  div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+
+    a img {
+      display: block;
+      height: 110px;
+    }
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  margin-bottom: 25px;
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  button {
+    min-width: 135px;
+    margin-left: auto;
+  }
+}
+
+.float-right {
+  background-color: red;
+  margin-left: auto;
+}

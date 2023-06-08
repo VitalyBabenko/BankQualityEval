@@ -10,12 +10,13 @@ import {
 import style from "./UserInfoForm.module.scss";
 
 export const UserInfoForm = () => {
-  const [age, setAge] = useState();
+  const [age, setAge] = useState("");
   const years = Array.from({ length: 100 }, (_, index) => index + 1);
 
   const handleChangeAge = (e) => {
     setAge(e.target.value);
   };
+  console.log(years);
 
   return (
     <Paper className={style.root} elevation={3}>
@@ -48,9 +49,6 @@ export const UserInfoForm = () => {
           value={age}
           onChange={handleChangeAge}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           {years.map((year) => (
             <MenuItem value={year}>{year}</MenuItem>
           ))}

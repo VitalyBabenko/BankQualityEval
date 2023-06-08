@@ -1,7 +1,9 @@
 .root {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  justify-content: flex-end;
+  padding: 20px 0;
+  margin-bottom: 40px;
 
   .title {
     padding: 10px 15px;
@@ -15,5 +17,11 @@
     p {
       font-weight: 400;
     }
+  }
+
+  .submitBtn {
+    float: right;
+    margin-left: auto;
+    width: 100px;
   }
 }
