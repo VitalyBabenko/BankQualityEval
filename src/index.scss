@@ -11,11 +11,6 @@ body {
   height: 100vh;
 }
 
-#root {
-  // overflow-x: hidden;
-  // overflow-y: hidden;
-}
-
 header {
   height: 110px;
 
@@ -28,6 +23,20 @@ header {
       display: block;
       height: 110px;
     }
+  }
+}
+
+.formTitle {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-top: 3px solid #2527a9;
+
+  h2 {
+    font-weight: 500;
+  }
+
+  p {
+    font-weight: 400;
   }
 }
 

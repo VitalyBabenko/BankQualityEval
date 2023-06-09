@@ -21,7 +21,7 @@ export const PreLanding = () => {
 
           <Link to="/form">
             <Button size="large" variant="contained">
-              Contained button
+              Začít
             </Button>
           </Link>
         </main>

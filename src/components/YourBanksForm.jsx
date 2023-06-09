@@ -1,7 +1,16 @@
 import { Checkbox, FormControlLabel, Paper } from "@mui/material";
 
-export const YourBanksForm = () => {
-  const handleChange = () => {};
+export const YourBanksForm = ({ onChange }) => {
+  const handleChange = (event) => {
+    const { name, checked } = event.target;
+    if (checked) {
+      onChange((prevSelectedBanks) => [...prevSelectedBanks, name]);
+    } else {
+      onChange((prevSelectedBanks) =>
+        prevSelectedBanks.filter((bank) => bank !== name)
+      );
+    }
+  };
 
   const banks = [
     "Česká spořitelna",

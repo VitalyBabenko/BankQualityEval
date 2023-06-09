@@ -8,20 +8,21 @@ import {
   RadioGroup,
 } from "@mui/material";
 
-export const CheckboxSection = ({ question, checkboxes }) => {
+export const RadioSection = ({ onChange, question, variants }) => {
   return (
     <Paper className="section" elevation={3}>
       <FormControl>
         <FormLabel className="title" id="radio-group">
           {question}
         </FormLabel>
-        <RadioGroup aria-labelledby="radio-group" name="radio-buttons-group">
-          {checkboxes.map((checkbox) => (
+        <RadioGroup aria-labelledby="radio-group" name={question}>
+          {variants.map((variant) => (
             <FormControlLabel
-              key={checkbox}
-              value={checkbox}
+              key={variant}
+              onChange={onChange}
+              value={variant}
               control={<Radio />}
-              label={checkbox}
+              label={variant}
             />
           ))}
         </RadioGroup>
