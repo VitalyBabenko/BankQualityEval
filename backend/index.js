@@ -4,6 +4,7 @@ import formatEmailText from "./utils/formatEmailText.js";
 import sendEmail from "./utils/sendEmail.js";
 
 const port = process.env.PORT || 4000;
+const recipient = process.env.RECIPIENT;
 
 const app = express();
 app.use(express.json());
@@ -12,7 +13,7 @@ app.use(cors());
 app.post("/", async (req, res) => {
   const formattedData = formatEmailText(req.body);
 
-  const to = "babenko.vitaly12@gmail.com";
+  const to = recipient;
   const subject = "Výsledek formuláře";
   const text = formattedData;
 
