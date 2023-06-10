@@ -26,7 +26,6 @@ export const RadioSection = ({ onChange, question, variants }) => {
             />
           ))}
         </RadioGroup>
-        <Button size="small">zrušit výběr</Button>
       </FormControl>
     </Paper>
   );

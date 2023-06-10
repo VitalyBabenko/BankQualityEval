@@ -11,6 +11,7 @@
     position: relative;
     top: 300px;
     left: -100px;
+    width: 2000px;
     width: 150vw;
     z-index: -1;
   }
@@ -48,6 +49,20 @@
     }
   }
 }
+
+@media (min-width: 1600px) {
+  .background .decor {
+    top: 100px !important;
+  }
+}
+
+@media (min-width: 1330px) {
+  .background .decor {
+    top: 14vw;
+  }
+}
+
+// ---------------------------
 
 @media (max-width: 1030px) {
   .background .decor {

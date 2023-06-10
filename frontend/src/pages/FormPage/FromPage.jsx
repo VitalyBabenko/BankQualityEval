@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button, Container } from "@mui/material";
-import style from "./FormPage.module.scss";
+import { Alert, Button, Container } from "@mui/material";
 import { Header } from "../../components/Header";
+import style from "./FormPage.module.scss";
 
 import { UserInfoForm } from "../../components/UserInfoForm/UserInfoForm";
 import { YourBanksForm } from "../../components/YourBanksForm";
@@ -10,20 +10,26 @@ import { RatingSection } from "../../components/RatingSection";
 import { TextFieldSection } from "../../components/TextFieldSection";
 import { useForm } from "react-hook-form";
 import { FormTitle } from "../../components/FormTitle";
+import { sendForm } from "../../service/service";
+import { useNavigate } from "react-router-dom";
 
 export const FromPage = () => {
   const {
     register,
-    // formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
-  } = useForm();
+  } = useForm({
+    mode: "onBlur",
+  });
   const [age, setAge] = useState("");
   const [checkboxValues, setCheckboxValues] = useState({});
   const [selectedBanks, setSelectedBanks] = useState([]);
   const [rating, setRating] = useState(0);
   const [wishes, setWishes] = useState("");
+  const [isAlert, setIsAlert] = useState(false);
+  const navigate = useNavigate();
 
-  const handleCheckboxChange = (event) => {
+  const handleRadioChange = (event) => {
     setCheckboxValues({
       ...checkboxValues,
       [event.target.name]: event.target.value,
@@ -34,31 +40,53 @@ export const FromPage = () => {
     setSelectedBanks(selectedBanks);
   };
 
-  const sendForm = (data) => {
+  const submitForm = async (formInfo) => {
     const result = {
-      ...data,
+      ...formInfo,
       age,
-      ...checkboxValues,
       selectedBanks,
+      ...checkboxValues,
       rating,
       wishes,
     };
-    console.log(result);
+
+    const response = await sendForm(result);
+
+    if (response?.success) {
+      navigate("/thank-you");
+    } else {
+      setIsAlert(true);
+    }
   };
 
   return (
     <>
       <Header />
       <Container className={style.root} maxWidth="md">
-        <form onSubmit={handleSubmit(sendForm)}>
+        {isAlert && (
+          <Alert
+            className="alert"
+            onClose={() => setIsAlert(false)}
+            severity="error"
+          >
+            Něco se pokazilo. Prosím zkuste to znovu
+          </Alert>
+        )}
+
+        <form onSubmit={handleSubmit(submitForm)}>
           <FormTitle />
 
-          <UserInfoForm age={age} setAge={setAge} register={register} />
+          <UserInfoForm
+            age={age}
+            setAge={setAge}
+            register={register}
+            errors={errors}
+          />
 
           <YourBanksForm onChange={handleBanksChange} />
 
           <RadioSection
-            onChange={handleCheckboxChange}
+            onChange={handleRadioChange}
             question="Používáte nějakou bankovní aplikaci?"
             variants={[
               "Ano, používám ho pravidelně",
@@ -68,7 +96,7 @@ export const FromPage = () => {
           />
 
           <RadioSection
-            onChange={handleCheckboxChange}
+            onChange={handleRadioChange}
             question="Jste spokojeni s pohodlím aplikace?"
             variants={[
               "Spokojenost s aplikací",
@@ -78,7 +106,7 @@ export const FromPage = () => {
           />
 
           <RadioSection
-            onChange={handleCheckboxChange}
+            onChange={handleRadioChange}
             question="Stává se vám často, že bankovní aplikace nefunguje správně?"
             variants={[
               "Nesetkali jste se s žádnou chybnou funkcí aplikace",
@@ -94,7 +122,7 @@ export const FromPage = () => {
           />
 
           <RadioSection
-            onChange={handleCheckboxChange}
+            onChange={handleRadioChange}
             question="Zhodnoťte online podporu banky, pokud jste ji použili."
             variants={[
               "Obecně uspokojivé",
@@ -104,7 +132,7 @@ export const FromPage = () => {
           />
 
           <RadioSection
-            onChange={handleCheckboxChange}
+            onChange={handleRadioChange}
             question="Jak dlouho trvalo vyřešení vašeho problému s online podporou?"
             variants={[
               "Vyřešení mého problému netrvalo dlouho",
@@ -121,7 +149,12 @@ export const FromPage = () => {
             wishes={wishes}
             setWishes={setWishes}
           />
-          <Button type="submit" className={style.submitBtn} variant="contained">
+          <Button
+            disabled={!isValid}
+            type="submit"
+            className={style.submitBtn}
+            variant="contained"
+          >
             Dále
           </Button>
         </form>

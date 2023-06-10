@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  color: #090909;
+  height: 100vh;
+
+  main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10vh;
+
+    h1 {
+      font-size: 64px;
+      margin-bottom: 26px;
+      line-height: 77px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0 auto;
+      max-width: 600px;
+      font-size: 16px;
+      line-height: 28px;
+      margin-bottom: 35px;
+    }
+
+    button {
+      margin-left: auto;
+    }
+  }
+}
