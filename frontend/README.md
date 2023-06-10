@@ -4,6 +4,12 @@
 
 ### - On first string change API_URL on your link
 
+### or use
+
+## Environment Variables
+
+#### API_URL - this is a hidden environment variable that contains a reference to the backend
+
 ---
 
 ## Scripts
